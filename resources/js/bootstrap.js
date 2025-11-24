@@ -5,10 +5,18 @@ import * as routes from './routes';
 
 // Setup route helper function for Wayfinder
 const routeHelper = (name, params = {}) => {
+    // Handle undefined or null route name
+    if (!name || name === 'undefined') {
+        return '#';
+    }
+    
     const routeFunction = routes[name];
     
     if (!routeFunction) {
-        console.error(`Route [${name}] not found.`);
+        // Only log error in development mode
+        if (process.env.NODE_ENV === 'development') {
+            console.warn(`Route [${name}] not found.`);
+        }
         return '#';
     }
     

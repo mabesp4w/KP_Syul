@@ -19,7 +19,10 @@ export default function AdminSidebar() {
     // Get current route name from Ziggy
     const getCurrentRoute = () => {
         try {
-            return route().current();
+            if (typeof route === 'function' && typeof route().current === 'function') {
+                return route().current();
+            }
+            return null;
         } catch {
             return null;
         }
@@ -96,9 +99,11 @@ export default function AdminSidebar() {
 
             // Method 1: Cek menggunakan route().current() dari Ziggy (jika tersedia)
             try {
-                const currentRoute = route().current();
-                if (currentRoute && currentRoute === routeName) {
-                    return true;
+                if (typeof route === 'function' && typeof route().current === 'function') {
+                    const currentRoute = route().current();
+                    if (currentRoute && currentRoute === routeName) {
+                        return true;
+                    }
                 }
             } catch {
                 // route().current() tidak tersedia atau error, lanjut ke path comparison
@@ -248,11 +253,11 @@ export default function AdminSidebar() {
                 <div className="flex items-center justify-between border-b border-base-300 p-4">
                     {!isCollapsed && (
                         <Link href={route('admin.dashboard')} className="flex items-center gap-2">
-                            <div className="placeholder avatar">
-                                <div className="w-10 rounded-lg bg-primary text-primary-content">
-                                    <span className="text-xl font-bold">PD</span>
-                                </div>
-                            </div>
+                            <img 
+                                src="/images/logo/dabohaley.jpeg" 
+                                alt="Logo PKBM Dabohaley" 
+                                className="w-10 h-10 rounded-lg object-cover"
+                            />
                             <div>
                                 <h2 className="text-lg font-bold">PKBM Dabohaley</h2>
                                 <p className="text-xs text-base-content/70">Admin Panel</p>
@@ -260,10 +265,12 @@ export default function AdminSidebar() {
                         </Link>
                     )}
                     {isCollapsed && (
-                        <div className="placeholder avatar mx-auto">
-                            <div className="w-10 rounded-lg bg-primary text-primary-content">
-                                <span className="text-xl font-bold">PD</span>
-                            </div>
+                        <div className="flex justify-center">
+                            <img 
+                                src="/images/logo/dabohaley.jpeg" 
+                                alt="Logo PKBM Dabohaley" 
+                                className="w-10 h-10 rounded-lg object-cover mx-auto"
+                            />
                         </div>
                     )}
                     <button

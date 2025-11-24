@@ -1,11 +1,9 @@
 import { Link, router, usePage } from '@inertiajs/react';
-import { useState } from 'react';
 import Button from '@/Components/ui/Button';
 import AOSWrapper from '@/Components/AOSWrapper';
 
 export default function UserLayout({ auth, children }) {
     const { url } = usePage();
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const handleLogout = (e) => {
         e.preventDefault();
@@ -30,8 +28,8 @@ export default function UserLayout({ auth, children }) {
             {/* Navbar */}
             <div className="navbar bg-base-100 shadow-lg sticky top-0 z-50">
                 <div className="navbar-start">
-                    <div className="dropdown">
-                        <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                    <div className="dropdown dropdown-bottom">
+                        <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-5 w-5"
@@ -44,14 +42,13 @@ export default function UserLayout({ auth, children }) {
                         </div>
                         <ul
                             tabIndex={0}
-                            className={`menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow ${isMenuOpen ? 'block' : 'hidden'}`}
+                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
                         >
                             {menuItems.map((item) => (
                                 <li key={item.name}>
                                     <Link
                                         href={item.route}
                                         className={isActive(item.path) ? 'active font-semibold' : ''}
-                                        onClick={() => setIsMenuOpen(false)}
                                     >
                                         {item.name}
                                     </Link>
@@ -59,8 +56,13 @@ export default function UserLayout({ auth, children }) {
                             ))}
                         </ul>
                     </div>
-                    <Link href="/" className="btn btn-ghost text-xl font-bold">
-                        PKBM Dabohaley
+                    <Link href="/" className="btn btn-ghost flex items-center gap-2">
+                        <img 
+                            src="/images/logo/dabohaley.jpeg" 
+                            alt="Logo PKBM Dabohaley" 
+                            className="h-10 w-10 object-cover rounded-lg"
+                        />
+                        <span className="text-xl font-bold hidden sm:inline">PKBM Dabohaley</span>
                     </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
@@ -125,7 +127,14 @@ export default function UserLayout({ auth, children }) {
                 <div className="container mx-auto px-4 py-8">
                     <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
                         <div>
-                            <h3 className="text-lg font-bold mb-4">PKBM Dabohaley</h3>
+                            <div className="flex items-center gap-3 mb-4">
+                                <img 
+                                    src="/images/logo/dabohaley.jpeg" 
+                                    alt="Logo PKBM Dabohaley" 
+                                    className="h-12 w-12 object-cover rounded-lg"
+                                />
+                                <h3 className="text-lg font-bold">PKBM Dabohaley</h3>
+                            </div>
                             <p className="text-base-content/70">
                                 Website Promosi Pendidikan PKBM Dabohaley - Sistem Informasi untuk mengelola data pendidikan dan kegiatan masyarakat.
                             </p>

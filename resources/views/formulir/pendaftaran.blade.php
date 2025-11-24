@@ -50,13 +50,13 @@
         .logo-circle {
             width: 70px;
             height: 70px;
-            border: 2px solid #000;
-            border-radius: 50%;
-            display: inline-block;
-            text-align: center;
-            line-height: 70px;
-            font-size: 9pt;
-            font-weight: bold;
+        }
+
+        .logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .header-center {
@@ -243,7 +243,10 @@
         <table class="header-table">
             <tr>
                 <td class="logo-cell">
-                    <div class="logo-circle">PKBM<br>DABOHALEY</div>
+                    <div class="logo-circle">
+                        <img src="{{ public_path('images/logo/dabohaley.jpeg') }}" alt="Logo PKBM Dabohaley"
+                            class="logo-img">
+                    </div>
                 </td>
                 <td class="header-center">
                     <h1>YAYASAN BINA PENDIDIKAN DABOHALEY (YABINDIKDA)</h1>
@@ -256,7 +259,10 @@
                     <p>Kode Pos 99359 Kontak Person HP Nomor: 0813 440 14926</p>
                 </td>
                 <td class="logo-cell">
-                    <div class="logo-circle">TUT WURI<br>HANDAYANI</div>
+                    <div class="logo-circle">
+                        <img src="{{ public_path('images/logo/tuwuri.png') }}" alt="Logo Tut Wuri Handayani"
+                            class="logo-img">
+                    </div>
                 </td>
             </tr>
         </table>

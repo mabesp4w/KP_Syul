@@ -266,7 +266,7 @@ export default function Home({ auth, beritaTerbaru, kegiatanTerbaru, galeriTerba
                                 Daftarkan diri Anda sekarang dan mulailah perjalanan pendidikan yang akan mengubah hidup Anda.
                             </p>
                             <div className={`flex gap-4 justify-center ${currentSlide === 4 ? 'animate-bounce-in animation-delay-600' : 'opacity-0'}`}>
-                                <Link href="/program-pendidikan">
+                                <Link href="/formulir">
                                     <Button variant="primary" size="lg">
                                         Daftar Sekarang
                                     </Button>

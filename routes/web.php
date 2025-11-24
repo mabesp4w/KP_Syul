@@ -27,9 +27,6 @@ Route::get('/program-pendidikan/{programPendidikan:slug}', [\App\Http\Controller
 Route::get('/formulir', [\App\Http\Controllers\User\FormulirController::class, 'index'])->name('formulir.index');
 Route::get('/formulir/download', [\App\Http\Controllers\User\FormulirController::class, 'download'])->name('formulir.download');
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 // Admin Routes - Hanya bisa diakses oleh admin
 Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {

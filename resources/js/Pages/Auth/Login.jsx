@@ -54,8 +54,15 @@ export default function Login({ status, canResetPassword }) {
                         {/* Logo/Brand */}
                         <div className="text-center mb-8" data-aos="fade-down">
                             <Link href="/" className="inline-block">
-                                <h1 className="text-3xl font-bold text-primary">PKBM Dabohaley</h1>
-                                <p className="text-sm text-base-content/70 mt-1">Sistem Informasi Pendidikan</p>
+                                <div className="flex flex-col items-center gap-3">
+                                    <img 
+                                        src="/images/logo/dabohaley.jpeg" 
+                                        alt="Logo PKBM Dabohaley" 
+                                        className="h-20 w-20 object-cover rounded-lg shadow-md"
+                                    />
+                                    <h1 className="text-3xl font-bold text-primary">PKBM Dabohaley</h1>
+                                    <p className="text-sm text-base-content/70 mt-1">Sistem Informasi Pendidikan</p>
+                                </div>
                             </Link>
                         </div>
 
